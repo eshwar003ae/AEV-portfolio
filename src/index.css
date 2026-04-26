@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 230 25% 5%;
+    --foreground: 220 20% 92%;
+
+    --card: 230 20% 8%;
+    --card-foreground: 220 20% 92%;
+
+    --popover: 230 20% 8%;
+    --popover-foreground: 220 20% 92%;
+
+    --primary: 250 85% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 230 20% 12%;
+    --secondary-foreground: 220 20% 85%;
+
+    --muted: 230 15% 15%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 200 100% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 230 15% 18%;
+    --input: 230 15% 15%;
+    --ring: 250 85% 65%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --neon-purple: 270 95% 70%;
+    --neon-blue: 210 100% 65%;
+    --neon-cyan: 185 100% 60%;
+    --neon-pink: 330 90% 65%;
+    --glass-bg: 230 20% 10% / 0.6;
+    --glass-border: 230 20% 30% / 0.3;
+    --glow-primary: 0 0 40px hsl(250 85% 65% / 0.4);
+    --glow-accent: 0 0 40px hsl(200 100% 60% / 0.3);
+    --glow-neon: 0 0 60px hsl(270 95% 70% / 0.3);
+    --gradient-hero: linear-gradient(135deg, hsl(250 85% 65% / 0.15), hsl(200 100% 60% / 0.1), hsl(270 95% 70% / 0.1));
+    --gradient-card: linear-gradient(135deg, hsl(230 20% 12% / 0.8), hsl(230 20% 8% / 0.9));
+    --gradient-button: linear-gradient(135deg, hsl(250 85% 65%), hsl(270 95% 70%), hsl(200 100% 60%));
+    --gradient-text: linear-gradient(135deg, hsl(0 0% 100%), hsl(250 85% 80%), hsl(200 100% 75%));
+
+    --sidebar-background: 230 25% 5%;
+    --sidebar-foreground: 220 20% 92%;
+    --sidebar-primary: 250 85% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 230 20% 12%;
+    --sidebar-accent-foreground: 220 20% 92%;
+    --sidebar-border: 230 15% 18%;
+    --sidebar-ring: 250 85% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-xl border;
+    background: hsl(var(--glass-bg));
+    border-color: hsl(var(--glass-border));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .glass-input {
+    @apply rounded-lg border px-4 py-3 text-foreground placeholder:text-muted-foreground transition-all duration-300;
+    background: hsl(var(--glass-bg));
+    border-color: hsl(var(--glass-border));
+    backdrop-filter: blur(12px);
+  }
+
+  .glass-input:focus {
+    outline: none;
+    border-color: hsl(var(--primary));
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-button {
+    @apply relative px-8 py-3 rounded-full font-semibold text-primary-foreground overflow-hidden transition-all duration-300;
+    background: var(--gradient-button);
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  .glow-button:hover {
+    box-shadow: var(--glow-primary), var(--glow-neon);
+    transform: scale(1.05);
+  }
+
+  .gradient-text {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-border {
+    position: relative;
+  }
+
+  .glow-border::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-button);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .glow-border:hover::after {
+    opacity: 1;
+  }
+
+  .floating-orb {
+    @apply absolute rounded-full pointer-events-none;
+    filter: blur(80px);
+    opacity: 0.4;
+  }
+
+  .section-spacing {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+}
+
+@layer utilities {
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.6);
+}
+#lovable-badge {
+  display: none !important;
+}
