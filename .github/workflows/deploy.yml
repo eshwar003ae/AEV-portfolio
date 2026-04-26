@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["main"] # GitHub will run this script every time you push to 'main'
+    branches: ["main"]
 
 permissions:
   contents: read
@@ -23,23 +23,16 @@ jobs:
           cache: 'npm'
           
       - name: Install dependencies
-        run: npm install # Installs Three.js, GSAP, etc.
+        run: npm install
         
       - name: Build
-        run: npm run build # Creates the 'dist' folder for hosting
-        
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+        run: npm run build
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Tells GitHub to host the contents of 'dist'
-          
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-        # Add this section below 'jobs:' and 'build:'
+          path: './dist'
+
   deploy:
     environment:
       name: github-pages
