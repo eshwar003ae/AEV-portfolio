@@ -128,69 +128,73 @@ const ProjectsSection = () => {
         </div>
       </div>
 
-      {/* OPTIONS MODAL */}
-      {showModal === "options" && activeProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={() => setShowModal(null)}>
-          <div className="glass-card p-8 max-w-sm w-full mx-4 relative" onClick={(e) => e.stopPropagation()}>
-            <button onClick={() => setShowModal(null)} className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"><X size={20} /></button>
-            <h3 className="text-xl font-bold font-display text-foreground mb-6">{activeProject.title}</h3>
-            
-            <div className="flex flex-col gap-3">
-              {activeProject.title.includes("Personal PC AI") ? (
-                <a href="/tommy-ai_2.0_all.deb" download className="flex items-center gap-3 p-4 rounded-lg bg-primary/20 hover:bg-primary/30 border border-primary/50 transition-colors">
-                  <LinkIcon size={24} className="text-primary" />
-                  <div>
-                    <p className="font-semibold text-foreground">Download .deb App</p>
-                    <p className="text-xs text-muted-foreground">Install on Ubuntu Linux [cite: 67]</p>
-                  </div>
-                </a>
-              ) : activeProject.link && (
-                <a href={activeProject.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors">
-                  <LinkIcon size={24} className="text-primary" />
-                  <div>
-                    <p className="font-semibold text-foreground">Visit Live Site</p>
-                    <p className="text-xs text-muted-foreground">Open in a new tab</p>
-                  </div>
-                </a>
-              )}
-
-              {activeProject.title.includes("Personal PC AI") ? (
-                <a href="/tommy-ai-readme.pdf" target="_blank" className="flex items-center gap-3 p-4 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors">
-                  <FileText size={24} className="text-primary" />
-                  <div>
-                    <p className="font-semibold text-foreground">View AI Tech Report (PDF)</p>
-                    <p className="text-xs text-muted-foreground">Architecture & Commands [cite: 50, 81]</p>
-                  </div>
-                </a>
-              ) : activeProject.title.includes("PLANT ELECTROPHYSIOLOGY") ? (
-                <a href="/PhytoPulse_Technical_Report.pdf" target="_blank" className="flex items-center gap-3 p-4 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors">
-                  <FileText size={24} className="text-primary" />
-                  <div>
-                    <p className="font-semibold text-foreground">View Tech Report (PDF)</p>
-                    <p className="text-xs text-muted-foreground">Bio-signal analysis [cite: 5, 11]</p>
-                  </div>
-                </a>
-              ) : activeProject.title.includes("IoT Smart Slot") ? (
-                <a href="/Smart_Parking_Report.pdf" target="_blank" className="flex items-center gap-3 p-4 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors">
-                  <FileText size={24} className="text-primary" />
-                  <div>
-                    <p className="font-semibold text-foreground">View IoT Report (PDF)</p>
-                    <p className="text-xs text-muted-foreground">Hardware & Pin Mapping</p>
-                  </div>
-                </a>
-              ) : (
-                <button onClick={() => setShowModal("readme")} className="flex items-center gap-3 p-4 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors text-left w-full">
-                  <FileText size={24} className="text-primary" />
-                  <div>
-                    <p className="font-semibold text-foreground">View README</p>
-                    <p className="text-xs text-muted-foreground">Read HTML documentation</p>
-                  </div>
-                </button>
-              )}
+      {/* OPTIONS MODAL - Fixed Paths */}
+{showModal === "options" && activeProject && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={() => setShowModal(null)}>
+    <div className="glass-card p-8 max-w-sm w-full mx-4 relative" onClick={(e) => e.stopPropagation()}>
+      <button onClick={() => setShowModal(null)} className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"><X size={20} /></button>
+      <h3 className="text-xl font-bold font-display text-foreground mb-6">{activeProject.title}</h3>
+      
+      <div className="flex flex-col gap-3">
+        {/* Main Action: Link or Download */}
+        {activeProject.title.includes("Personal PC AI") ? (
+          /* Added /AEV-portfolio/ to the path */
+          <a href="/AEV-portfolio/tommy-ai_2.0_all.deb" download className="flex items-center gap-3 p-4 rounded-lg bg-primary/20 hover:bg-primary/30 border border-primary/50 transition-colors">
+            <LinkIcon size={24} className="text-primary" />
+            <div>
+              <p className="font-semibold text-foreground">Download .deb App</p>
+              <p className="text-xs text-muted-foreground">Install on Ubuntu Linux</p>
             </div>
-          </div>
-        </div>
-      )}
+          </a>
+        ) : activeProject.link && (
+          <a href={activeProject.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors">
+            <LinkIcon size={24} className="text-primary" />
+            <div>
+              <p className="font-semibold text-foreground">Visit Live Site</p>
+              <p className="text-xs text-muted-foreground">Open in a new tab</p>
+            </div>
+          </a>
+        )}
+
+        {/* Documentation Action: Fixed PDF Paths */}
+        {activeProject.title.includes("Personal PC AI") ? (
+          <a href="/AEV-portfolio/tommy-ai-readme.pdf" target="_blank" className="flex items-center gap-3 p-4 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors">
+            <FileText size={24} className="text-primary" />
+            <div>
+              <p className="font-semibold text-foreground">View AI Tech Report (PDF)</p>
+              <p className="text-xs text-muted-foreground">Architecture & Commands</p>
+            </div>
+          </a>
+        ) : activeProject.title.includes("PLANT ELECTROPHYSIOLOGY") ? (
+          <a href="/AEV-portfolio/PhytoPulse_Technical_Report.pdf" target="_blank" className="flex items-center gap-3 p-4 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors">
+            <FileText size={24} className="text-primary" />
+            <div>
+              <p className="font-semibold text-foreground">View Tech Report (PDF)</p>
+              <p className="text-xs text-muted-foreground">Plant bio-signals</p>
+            </div>
+          </a>
+        ) : activeProject.title.includes("IoT Smart Slot") ? (
+          <a href="/AEV-portfolio/Smart_Parking_Report.pdf" target="_blank" className="flex items-center gap-3 p-4 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors">
+            <FileText size={24} className="text-primary" />
+            <div>
+              <p className="font-semibold text-foreground">View IoT Report (PDF)</p>
+              <p className="text-xs text-muted-foreground">Hardware & Pin Mapping</p>
+            </div>
+          </a>
+        ) : (
+          /* Web projects README modal stays the same */
+          <button onClick={() => setShowModal("readme")} className="flex items-center gap-3 p-4 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors text-left w-full">
+            <FileText size={24} className="text-primary" />
+            <div>
+              <p className="font-semibold text-foreground">View README</p>
+              <p className="text-xs text-muted-foreground">Documentation</p>
+            </div>
+          </button>
+        )}
+      </div>
+    </div>
+  </div>
+)}
 
       {/* README MODAL - DYNAMIC HTML CONTENT */}
       {showModal === "readme" && activeProject && (
