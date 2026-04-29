@@ -69,7 +69,7 @@ const HeroSection = () => {
           
           <p className="text-muted-foreground text-xl md:text-2xl max-w-lg">
             I'm an Artifical Intelligence & Data Science student specializing in Machine Learning, 
-            Data Analytics, and building intelligent systems[cite: 4, 13].
+            Data Analytics, and building intelligent systems.
           </p>
 
           {/* New Button Group for Hire Me & Resume */}
