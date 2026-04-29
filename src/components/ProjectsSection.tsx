@@ -181,13 +181,13 @@ const ProjectsSection = () => {
           <div className="flex flex-col gap-3">
              {/* Certification logic inside the loop */}
              {activeProject.title.includes("Smart Email Pro") && (
-               <a href="/AEV-portfolio/Conference_Spam_E-mail_Detection.pdf" target="_blank" className="flex items-center gap-3 p-4 rounded-lg bg-primary/10 border border-primary/30 hover:bg-primary/20 transition-colors">
+               <a href="/AEV-portfolio/Conference Spam E-mail Detection.pdf" target="_blank" className="flex items-center gap-3 p-4 rounded-lg bg-primary/10 border border-primary/30 hover:bg-primary/20 transition-colors">
                  <FileText size={24} className="text-primary" />
                  <p className="font-semibold text-foreground text-sm">Conference Certificate</p>
                </a>
              )}
              {activeProject.title.includes("Auto-EDA-Chart") && (
-               <a href="/AEV-portfolio/Tata_Data_analyst_Intership-1.pdf" target="_blank" className="flex items-center gap-3 p-4 rounded-lg bg-primary/10 border border-primary/30 hover:bg-primary/20 transition-colors">
+               <a href="/AEV-portfolio/Tata Data analyst Intership-1.pdf" target="_blank" className="flex items-center gap-3 p-4 rounded-lg bg-primary/10 border border-primary/30 hover:bg-primary/20 transition-colors">
                  <FileText size={24} className="text-primary" />
                  <p className="font-semibold text-foreground text-sm">Tata GenAI Certificate</p>
                </a>
