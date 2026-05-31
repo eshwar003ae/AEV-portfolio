@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { FileText, ArrowRight } from "@phosphor-icons/react";
+// Import your robot screenshot here
+import robotHeroImg from "@/assets/robot-hero.png"; 
 
 const HeroSection = () => {
   const headlineRef = useRef<HTMLHeadingElement>(null);
@@ -42,8 +44,17 @@ const HeroSection = () => {
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden bg-background"
     >
-      {/* 3D Robot Background Layer - Cleaned Up Styles */}
-      <div className="absolute inset-0 md:left-1/2 md:w-1/2 h-full z-0 opacity-70 md:opacity-100 pointer-events-none md:pointer-events-auto">
+      {/* MOBILE DISPLAY: Show static image on mobile screens (hidden on desktop) */}
+      <div className="absolute inset-0 block md:hidden z-0 opacity-40 pointer-events-none">
+        <img 
+          src={robotHeroImg} 
+          alt="AI Robot Background" 
+          className="w-full h-full object-cover object-center"
+        />
+      </div>
+
+      {/* PC DISPLAY: Show interactive 3D Spline iframe on desktop (hidden on mobile) */}
+      <div className="hidden md:block absolute top-0 bottom-0 right-0 left-1/2 w-1/2 h-full z-0 pointer-events-auto">
         <iframe
           src="https://my.spline.design/nexbotrobotcharacterconcept-tyNIBF7MjZdZ8aBkToQGOZuw/"
           frameBorder="0"
@@ -79,7 +90,7 @@ const HeroSection = () => {
               onClick={() => scrollToSection("#contact")}
               className="px-6 md:px-8 py-3 rounded-full bg-primary text-primary-foreground font-bold hover:opacity-90 transition-all flex items-center gap-2 text-sm md:text-base cursor-pointer"
             >
-              Hire Me
+              Contact Me
             </button>
             
             <a 
