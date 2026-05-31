@@ -83,7 +83,7 @@ const HeroSection = () => {
             </button>
             
             <a 
-              href="/AEV-portfolio/AEV-Resume.pdf" 
+              href="/AEV-portfolio/AEV_Ats_free_resume.pdf" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 md:px-8 py-3 rounded-full border border-primary text-foreground font-bold hover:bg-primary/10 transition-all text-sm md:text-base"
